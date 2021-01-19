@@ -1,0 +1,28 @@
+﻿@model IEnumerable<AirQualityPage.Models.MeasurmentResult>
+
+@{
+    ViewData["Title"] = "Measurment for City";
+}
+
+<h1>
+    Air Quality Measurment for @ViewBag.Message
+</h1>
+
+<table class="table">
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <h2>Location: @Html.DisplayFor(modelItem => item.location)</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <partial name="_MeasurmentView" model="item.measurements" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>@Html.ValidationSummary(true, "", new { @class = "text-danger" })</p>

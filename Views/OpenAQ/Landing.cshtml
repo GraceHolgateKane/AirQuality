@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AirQualityPage.Models.MeasurmentResult>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center" style="padding:10px; margin:5px;">
+    <h1 class="display-4">Welcome</h1>
+    <div class="container">
+        <div class="text-center" style="padding:10px; margin:5px;">
+            <button type="button" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("Country", "OpenAQ")'">Find Air Quality by Country</button>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <p>Current Air Quality for @ViewBag.Message</p>
+    <div class="container-fluid" style="padding:10px; margin:5px;">
+        <div class="row" style="margin:auto">
+            @foreach (var item in Model)
+            {
+                <div class="col-md" style="border:solid; padding:10px; margin:5px;">
+                    <h2>@Html.DisplayFor(modelItem => item.location)</h2>
+                    <partial name="_MeasurmentView" model="item.measurements" />
+                </div>
+            }
+            <p>@Html.ValidationSummary(true, "", new { @class = "text-danger" })</p>
+        </div>
+    </div>
+</div>
+

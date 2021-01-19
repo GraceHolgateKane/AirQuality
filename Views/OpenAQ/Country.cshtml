@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AirQualityPage.Models.AirQualityCountry>
+
+@{
+    ViewData["Title"] = "Country";
+}
+
+<h1>County</h1>
+
+<table class="table" id="table1">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cities)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cities)
+                </td>
+                <td>
+                    @Html.ActionLink("Select Country", "City", new { code = item.code })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>@Html.ValidationSummary(true, "", new { @class = "text-danger" })</p>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="~/js/Pagination.js"></script>

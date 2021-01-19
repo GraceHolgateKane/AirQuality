@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AirQualityPage.Models.Measurement>
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.parameter)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.value)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.parameter)
+                    </td>
+                    <td>
+                        @{
+                            var fullValue = item.value + " " + item.unit;
+                            @Html.DisplayFor(modelItem => fullValue)
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
